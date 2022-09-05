@@ -9,6 +9,7 @@ import scipy as sp
 import pickle
 
 #Dataframes
+"""
 synopsis = pickle.load(open('synopsis_df_copy.pkl', 'rb'))
 synopsis_df = pd.DataFrame(synopsis)
 
@@ -136,7 +137,7 @@ def rec_animes(anime_id = None):
                  'imgurl': str(imgurl)
                  })
     return jsonify(final_list)
- 
+""" 
 @app.route('/getreply')
 def getreply(reply = None):
   return jsonify({'Reply': 'Hello'})
