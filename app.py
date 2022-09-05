@@ -9,13 +9,14 @@ import scipy as sp
 import pickle
 
 #Dataframes
-"""
+
 synopsis = pickle.load(open('synopsis_df_copy.pkl', 'rb'))
 synopsis_df = pd.DataFrame(synopsis)
 
+"""
 item_sim = pickle.load(open('item_sim_df_copy.pkl', 'rb'))
 item_sim_df = pd.DataFrame(item_sim)
-
+"""
 
 
 #Functions for Getting MetaData6
@@ -137,7 +138,7 @@ def rec_animes(anime_id = None):
                  'imgurl': str(imgurl)
                  })
     return jsonify(final_list)
-""" 
+
 @app.route('/getreply')
 def getreply(reply = None):
   return jsonify({'Reply': 'Hello'})
