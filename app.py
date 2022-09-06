@@ -125,7 +125,7 @@ def rec_animes(anime_name = None):
     
     #count = 1
     #print('Similar shows to {} include:\n'.format(anime_name))
-    for item in item_sim_df.sort_values(by = anime_name, ascending = False).index[1:6]: #index[1:6] it starts in 1 so that it wont recommend itself, and 6 so that it prints animes in the index from 1-6
+    for item in item_sim_df.sort_values(by = anime_name, ascending = False).index[1:11]: #index[1:6] it starts in 1 so that it wont recommend itself, and 6 so that it prints animes in the index from 1-6
       #Gets the metadata of each anime and then put them in a dictionary which will be appended to a list so that it can be converted into a json file
       frame = GetAnimeFrame(item)
       anime_id = frame.anime_id.values[0]
