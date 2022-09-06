@@ -120,7 +120,7 @@ def rec_animes(anime_name = None):
     final_list = []
 
    
-    frame = GetAnimeFrame(anime_name)
+    frame = GetAnimeFrame(anime_name.lower())
     anime_name = frame.Name.values[0] #Use the Name to get Similar Animes
     
     #count = 1
