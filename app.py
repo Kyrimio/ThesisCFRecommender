@@ -13,10 +13,10 @@ import pickle
 synopsis = pickle.load(open('synopsis_df_copy.pkl', 'rb'))
 synopsis_df = pd.DataFrame(synopsis)
 
-"""
-item_sim = pickle.load(open('item_sim_df_copy.pkl', 'rb'))
+
+item_sim = pickle.load(open('item_sim_small.pkl', 'rb'))
 item_sim_df = pd.DataFrame(item_sim)
-"""
+
 
 
 #Functions for Getting MetaData6
