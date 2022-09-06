@@ -25,7 +25,10 @@ def GetAnimeFrame(anime = None):
   if isinstance(anime, int):
     return synopsis_df[synopsis_df.anime_id == anime]
   if isinstance(anime, str):
-    return synopsis_df[synopsis_df.Name == anime]
+    if anime.islower() == True:
+      return synopsis_df[synopsis_df.lowered == anime]
+    else:
+      return synopsis_df[synopsis_df.Name == anime]
 
 @app.route('/getID')
 def getID(anime):
