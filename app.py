@@ -112,16 +112,16 @@ def getmetadata(anime = None):
 
 
 #Recommender System
-@app.route('/recommend/<anime_id>', methods = ['GET'])
-def rec_animes(anime_id = None):
+@app.route('/recommend/<anime_name>', methods = ['GET'])
+def rec_animes(anime_name = None):
     final_list = []
 
-    #Get Title based on ID
-    frame = GetAnimeFrame(int(anime_id))
-    anime_name = frame.Name.values[0] #Use the Name to get Similar Animes
+    #Get ID based on Title
+    #frame = GetAnimeFrame(int(anime_id))
+    #anime_name = frame.anime_id.values[0] #Use the Name to get Similar Animes
     
-    count = 1
-    print('Similar shows to {} include:\n'.format(anime_name))
+    #count = 1
+    #print('Similar shows to {} include:\n'.format(anime_name))
     for item in item_sim_df.sort_values(by = anime_name, ascending = False).index[1:6]: #index[1:6] it starts in 1 so that it wont recommend itself, and 6 so that it prints animes in the index from 1-6
       #Gets the metadata of each anime and then put them in a dictionary which will be appended to a list so that it can be converted into a json file
       frame = GetAnimeFrame(item)
