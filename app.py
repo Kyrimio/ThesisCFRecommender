@@ -137,7 +137,7 @@ def rec_animes(anime_name = None):
                  'anime_id': int(anime_id),
                  'Name': str(Name),
                  'Genres': str(genre),
-                 'Synopsis':str(synopsis),
+                 'synopsis':str(synopsis),
                  'imgurl': str(imgurl)
                  })
     return jsonify(final_list)
