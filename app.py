@@ -10,7 +10,7 @@ import pickle
 
 #Dataframes
 
-synopsis = pickle.load(open('synopsis_df_copy.pkl', 'rb'))
+synopsis = pickle.load(open('final_synopsis_df.pkl', 'rb'))
 synopsis_df = pd.DataFrame(synopsis)
 
 
@@ -119,9 +119,9 @@ def getmetadata(anime = None):
 def rec_animes(anime_name = None):
     final_list = []
 
-    #Get ID based on Title
-    #frame = GetAnimeFrame(int(anime_id))
-    #anime_name = frame.anime_id.values[0] #Use the Name to get Similar Animes
+   
+    frame = GetAnimeFrame(anime_name)
+    anime_name = frame.anime_id.values[0] #Use the Name to get Similar Animes
     
     #count = 1
     #print('Similar shows to {} include:\n'.format(anime_name))
@@ -142,9 +142,6 @@ def rec_animes(anime_name = None):
                  })
     return jsonify(final_list)
 
-@app.route('/getreply')
-def getreply(reply = None):
-  return jsonify({'Reply': 'Hello'})
 
 if __name__ == '__main__':
     app.run()
