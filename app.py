@@ -14,7 +14,7 @@ synopsis = pickle.load(open('final_synopsis_df.pkl', 'rb'))
 synopsis_df = pd.DataFrame(synopsis)
 
 
-item_sim = pickle.load(open('item_sim_small.pkl', 'rb'))
+item_sim = pickle.load(open('item_sim_df(090822).pkl', 'rb'))
 item_sim_df = pd.DataFrame(item_sim)
 
 
