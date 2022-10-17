@@ -144,7 +144,7 @@ def rec_animes(anime_name):
 
 @app.route('/rec', methods = ['GET'])
 def rec_all():
-  anime_list = request.args.getlist('anime', type = string)
+  anime_list = request.args.getlist('anime')
   totalrecommendations = []
   #Top 10 recs will be sorted out for display
   recs = [[], [], [], [], [], [], [], [], [], [],]
