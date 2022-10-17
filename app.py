@@ -150,9 +150,29 @@ def rec_all():
   recs = [[], [], [], [], [], [], [], [], [], [],]
   
   for anime in anime_list:
-    anime_rec_list = rec_animes(anime)
-    for i in range(len(anime_rec_list)):
-      recs[i].append(anime_rec_list[i])
+     final_list = []
+      
+    frame = GetAnimeFrame(anime_name.lower())
+    anime_name = frame.Name.values[0] #Use the Name to get Similar Animes
+    
+    for item in item_sim_df.sort_values(by = anime_name, ascending = False).index[1:11]: #index[1:6] it starts in 1 so that it wont recommend itself, and 6 so that it prints animes in the index from 1-6
+      #Gets the metadata of each anime and then put them in a dictionary which will be appended to a list so that it can be converted into a json file
+      frame = GetAnimeFrame(item)
+      anime_id = frame.anime_id.values[0]
+      Name =  frame.Name.values[0]
+      genre = frame.Genres.values[0]
+      synopsis = frame.synopsis.values[0]
+      imgurl = frame.imgurl.values[0]
+      final_list.append({
+                 'anime_id': int(anime_id),
+                 'Name': str(Name),
+                 'Genres': str(genre),
+                 'synopsis':str(synopsis),
+                 'imgurl': str(imgurl)
+                 })
+    
+    for i in range(len(final_list)):
+      recs[i].append(final_list[i])
   
   #Sort the recommendations based on their positioning
   for sorted in recs:
@@ -161,7 +181,7 @@ def rec_all():
         totalrecommendations.append(anime)
 
   print('Total recommendations: ', len(totalrecommendations))
-  return totalrecommendations
+  return jsonify(totalrecommendations)
 
 if __name__ == '__main__':
     app.run()
