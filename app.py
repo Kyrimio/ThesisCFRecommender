@@ -10,11 +10,11 @@ import pickle
 
 #Dataframes
 
-synopsis = pickle.load(open('final_synopsis_df.pkl', 'rb'))
+synopsis = pickle.load(open('synopsis_df(101622).pkl', 'rb'))
 synopsis_df = pd.DataFrame(synopsis)
 
 
-item_sim = pickle.load(open('item_sim_df(090822).pkl', 'rb'))
+item_sim = pickle.load(open('item_sim_df(101622).pkl', 'rb'))
 item_sim_df = pd.DataFrame(item_sim)
 
 
@@ -142,6 +142,26 @@ def rec_animes(anime_name = None):
                  })
     return jsonify(final_list)
 
+@app.route('/rec', methods = ['GET'])
+def rec_all():
+  anime_list = request.args.getlist('anime', type = string)
+  totalrecommendations = []
+  #Top 10 recs will be sorted out for display
+  recs = [[], [], [], [], [], [], [], [], [], [],]
+  
+  for anime in anime_list:
+    anime_rec_list = rec_animes(anime)
+    for i in range(len(anime_rec_list)):
+      recs[i].append(anime_rec_list[i])
+  
+  #Sort the recommendations based on their positioning
+  for sorted in recs:
+    for anime in sorted:
+      if anime not in totalrecommendations:
+        totalrecommendations.append(anime)
+
+  print('Total recommendations: ', len(totalrecommendations))
+  return totalrecommendations
 
 if __name__ == '__main__':
     app.run()
