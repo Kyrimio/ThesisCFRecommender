@@ -116,7 +116,7 @@ def getmetadata(anime = None):
 
 #Recommender System
 @app.route('/recommend/<anime_name>', methods = ['GET'])
-def rec_animes(anime_name = None):
+def rec_animes(anime_name):
     final_list = []
 
    
@@ -144,7 +144,7 @@ def rec_animes(anime_name = None):
 
 @app.route('/rec', methods = ['GET'])
 def rec_all():
-  anime_list = request.args.getlist('anime', type = string)
+  anime_list = request.args.getlist('anime')
   totalrecommendations = []
   #Top 10 recs will be sorted out for display
   recs = [[], [], [], [], [], [], [], [], [], [],]
