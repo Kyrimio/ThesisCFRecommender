@@ -144,15 +144,14 @@ def rec_animes(anime_name):
 
 @app.route('/rec', methods = ['GET'])
 def rec_all():
-  anime_list = request.args.getlist('anime')
+  anime_list = request.args.getlist('anime', type = string)
   totalrecommendations = []
   #Top 10 recs will be sorted out for display
   recs = [[], [], [], [], [], [], [], [], [], [],]
   
   for anime in anime_list:
-     final_list = []
-      
-    frame = GetAnimeFrame(anime_name.lower())
+    final_list = []
+    frame = GetAnimeFrame(anime.lower())
     anime_name = frame.Name.values[0] #Use the Name to get Similar Animes
     
     for item in item_sim_df.sort_values(by = anime_name, ascending = False).index[1:11]: #index[1:6] it starts in 1 so that it wont recommend itself, and 6 so that it prints animes in the index from 1-6
