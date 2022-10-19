@@ -176,7 +176,7 @@ def rec_all():
   #Sort the recommendations based on their positioning
   for sorted in recs:
     for anime in sorted:
-      if anime not in totalrecommendations:
+      if anime not in totalrecommendations and anime['Name'] not in anime_list:
         totalrecommendations.append(anime)
 
   print('Total recommendations: ', len(totalrecommendations))
