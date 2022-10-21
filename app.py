@@ -166,6 +166,7 @@ def rec_all():
                  'anime_id': int(anime_id),
                  'Name': str(Name),
                  'Genres': str(genre),
+                 'Similarity': item_sim_df.at[str(Name), anime_name],
                  'synopsis':str(synopsis),
                  'imgurl': str(imgurl)
                  })
@@ -180,6 +181,7 @@ def rec_all():
         totalrecommendations.append(anime)
 
   print('Total recommendations: ', len(totalrecommendations))
+  totalrecommendations.sort(key=operator.itemgetter('Similarity'), reverse= True)
   return jsonify(totalrecommendations)
 
 if __name__ == '__main__':
