@@ -159,12 +159,14 @@ def rec_all():
       frame = GetAnimeFrame(item)
       anime_id = frame.anime_id.values[0]
       Name =  frame.Name.values[0]
+      en_name = frame.EN_Name.values[0]
       genre = frame.Genres.values[0]
       synopsis = frame.synopsis.values[0]
       imgurl = frame.imgurl.values[0]
       final_list.append({
                  'anime_id': int(anime_id),
                  'Name': str(Name),
+                 'EN_Name': str(en_name),
                  'Genres': str(genre),
                  'Similarity': item_sim_df.at[str(Name), anime_name],
                  'synopsis':str(synopsis),
