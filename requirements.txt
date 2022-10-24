@@ -4,4 +4,4 @@ gunicorn
 numpy
 scipy
 git-lfs
-
+operator
