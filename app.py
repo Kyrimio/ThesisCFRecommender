@@ -7,7 +7,7 @@ import pandas as pd
 import numpy as np
 import scipy as sp
 import pickle
-
+import operator
 #Dataframes
 
 synopsis = pickle.load(open('synopsis_df(101622).pkl', 'rb'))
